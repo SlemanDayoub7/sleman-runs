@@ -24,6 +24,6 @@ Navigation needs: a bottom-nav shell that preserves per-tab state, a deep link i
 
 ## Consequences
 
-- Web demo gets real URLs, which matters for the portfolio link.
+- Web showcase gets real URLs, which matters for the portfolio link.
 - Guards centralize "where can the user be" logic.
 - Slight learning curve for `StatefulShellRoute`, documented in the router file.

@@ -16,7 +16,7 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 | `v0.4-gps-core` | 4 | Acquisition and filtering | Permission flow, GPS stream, filter, live distance/time on screen |
 | `v0.5-live-run` | 5 | Full tracking | Map + polyline, auto-pause, splits, foreground notification, crash recovery |
 | `v0.6-history` | 6 | Run log | List, detail with route map, edit notes/RPE, delete with undo |
-| `v0.7-insight` | 7 | Stats and plans | Weekly volume, streaks, plan generator, pace calculator, web demo on Pages |
+| `v0.7-insight` | 7 | Stats and plans | Weekly volume, streaks, plan generator, pace calculator, web showcase on Pages |
 | `v1.0-launch` | 8 | Release | Accessibility pass, performance pass, store assets, tag, retro post |
 
 ---
@@ -31,6 +31,7 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 - [ ] l10n: `app_en.arb`, `app_ar.arb`, RTL verified in both themes
 - [ ] `get_it` modules + resolve-all smoke test
 - [ ] CI: format, analyze, test, build APK on PR
+- [ ] **Web spike (1 h, timeboxed):** `flutter build web`, Drift wasm, Pages deploy — de-risk [ADR-0010](adr/0010-web-demo-scope.md) now, not in Week 7
 - [ ] `main` protected, PR template, issue templates, labels, Dependabot
 
 **Post 02:** "I built the theme and RTL switch before the first feature. Here's why."
@@ -94,7 +95,7 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 - [ ] Weekly volume bar chart, streak logic (with unit tests), PR detection
 - [ ] Training plan strategies: 5K beginner, 10K intermediate, half marathon
 - [ ] Pace calculator (split table, negative split, finish-time predictor)
-- [ ] Web build: Drift wasm setup, responsive layout
+- [ ] Web showcase (timebox: 1 day): responsive layout, seeded 20 runs, replay mode over `LocationDataSource`, "showcase build" banner
 - [ ] GitHub Pages deploy workflow + live link in README
 - [ ] Accessibility: semantics, 48 dp targets, contrast, screen-reader pass
 
@@ -139,5 +140,5 @@ Every issue uses the template: context, acceptance criteria, out-of-scope, scree
 | Background GPS flakiness on OEM Android skins | High | Test on a mid-range device early (Week 4, not Week 7); document findings |
 | Scope creep into social features | High | Anything not in this file goes to `v2` in the backlog, no exceptions |
 | GPS work eats content schedule | Medium | Batch-record content on Sundays; posts can trail the code by days |
-| Web demo blocked by Drift wasm | Medium | Fallback: web build uses an in-memory repository with seeded data |
+| Web showcase blocked by Drift wasm | Medium | Fallback: web build uses an in-memory repository with seeded data |
 | Arabic copy quality | Medium | Native review before Week 8; keep strings short and test with real text length |

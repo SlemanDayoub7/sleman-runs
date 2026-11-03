@@ -5,7 +5,7 @@
 
 ## Context
 
-The live run screen and the run detail screen both need a map: a moving polyline, a current-position marker, and a fit-to-bounds view of a finished route. The app ships a free public web demo and has no backend and no budget.
+The live run screen and the run detail screen both need a map: a moving polyline, a current-position marker, and a fit-to-bounds view of a finished route. The app ships a free public web showcase and has no backend and no budget.
 
 ## Decision
 

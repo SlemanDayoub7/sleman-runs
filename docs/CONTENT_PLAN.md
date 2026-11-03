@@ -64,7 +64,7 @@ Week 0 content is written **before** the first line of code, so the series start
 | 13 | 6 | History + splits | Carousel: pace zones explained with real splits from a 10K. |
 | 14 | 6 | Bug post-mortem | "This bug only appeared after 4 km. Here's how I found it." |
 | 15 | 7 | Stats | "Weekly volume, streaks, PRs — all in SQL, no backend." |
-| 16 | 7 | Web demo | "Try it in your browser right now." (link) |
+| 16 | 7 | Web showcase | "Try the app in your browser. No install, real UI — but the GPS part needs a phone." (link) |
 | 17 | 7 | SOLID in real files | Carousel: 5 principles, 5 real file paths, 5 screenshots. |
 | 18 | 8 | Launch | "v1.0 is out. 8 weeks, 61 PRs, X tests, 2 languages, 1 GPS pipeline." |
 | 19 | 8 | Retro + numbers | "What I got wrong: 3 architectural mistakes and what they cost." |

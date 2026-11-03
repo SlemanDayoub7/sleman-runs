@@ -25,7 +25,7 @@ Most portfolio apps are a UI with a `main.dart`. This one is the opposite: the p
 | **v0.1** | Repo, docs, design tokens, theme system, l10n (EN/AR + RTL), router, DI |
 | **v0.5** | Live GPS tracking, map, auto-pause, crash-safe session recovery |
 | **v0.8** | Run history, splits, stats dashboard, training plans, pace calculator |
-| **v1.0** | Polish, accessibility, web demo, store-ready build |
+| **v1.0** | Polish, accessibility, web showcase, store-ready build |
 | **v2.0** | Account + sync, friend activity, offline queue replay |
 
 Deliberately out of scope for v1: social feed, wearable sync, AI coaching, payments.
@@ -89,8 +89,10 @@ Minimum SDK: Flutter 3.41 / Dart 3.11.
 
 ## Try it
 
-- Web demo: _coming in Week 7 (GitHub Pages)_
-- Android build: _coming in Week 5_
+- Web showcase with seeded data and a replayed run: _coming in Week 7 (GitHub Pages)_
+- Android build with live GPS: _coming in Week 5_
+
+Background GPS is intentionally mobile-only — a browser tab cannot record a run with the screen off. The web build is a clickable product tour, not a supported platform. See [ADR-0010](docs/adr/0010-web-demo-scope.md).
 
 ## License
 

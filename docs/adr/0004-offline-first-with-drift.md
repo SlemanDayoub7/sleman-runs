@@ -31,6 +31,6 @@ Schema essentials:
 ## Consequences
 
 - Stats and history are SQL queries, not client-side loops.
-- Web demo needs `sqlite3.wasm` + a worker; handled in the Week 7 build.
+- Web showcase needs `sqlite3.wasm` + a worker; handled in the Week 7 build.
 - Migration discipline required from day one; every schema change ships a migration test.
 - v2 sync becomes additive: same ports, one extra data source.
