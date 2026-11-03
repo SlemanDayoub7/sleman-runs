@@ -1,0 +1,7 @@
+# Code owners are the default reviewers for PRs touching these paths.
+* @SlemanDayoub7
+
+# Architecture and decisions need an explicit owner.
+/docs/ @SlemanDayoub7
+/docs/adr/ @SlemanDayoub7
+/.github/ @SlemanDayoub7

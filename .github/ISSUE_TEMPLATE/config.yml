@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Architecture and decisions
+    url: https://github.com/SlemanDayoub7/sleman-runs/blob/main/docs/ARCHITECTURE.md
+    about: Read the architecture document and ADRs before proposing structural changes.
+  - name: Roadmap
+    url: https://github.com/SlemanDayoub7/sleman-runs/blob/main/docs/ROADMAP.md
+    about: Check the current milestone and what is deliberately out of scope.
