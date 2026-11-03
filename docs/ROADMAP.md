@@ -23,15 +23,16 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 
 ## Week 1 — Foundation
 
-- [ ] `flutter create` with `--org com.sleman`, package `sleman_runs`, `--platforms=android` (no web per [ADR-0011](adr/0011-no-web-target.md), no iOS in v1 per [ADR-0012](adr/0012-android-only-v1.md))
-- [ ] Folder skeleton per [ARCHITECTURE § 2](ARCHITECTURE.md#2-folder-map)
-- [ ] `very_good_analysis`, strict `analysis_options.yaml`, `dependency_validator`
-- [ ] Theme: `ColorScheme.fromSeed`, `AppThemeExtension`, light/dark/system, persisted
-- [ ] `go_router` shell with 4 destinations (Track, History, Plan, Settings)
-- [ ] l10n: `app_en.arb`, `app_ar.arb`, RTL verified in both themes
-- [ ] `get_it` modules + resolve-all smoke test
-- [ ] CI: format, analyze, test, build APK on PR
-- [ ] `main` protected, PR template, issue templates, labels, Dependabot
+- [x] `flutter create` with `--org com.sleman`, package `sleman_runs`, `--platforms=android` (no web per [ADR-0011](adr/0011-no-web-target.md), no iOS in v1 per [ADR-0012](adr/0012-android-only-v1.md))
+- [x] Folder skeleton per [ARCHITECTURE § 2](ARCHITECTURE.md#2-folder-map)
+- [x] `very_good_analysis`, strict `analysis_options.yaml`, `dependency_validator`
+- [x] Theme: `ColorScheme.fromSeed`, `AppThemeExtension`, light/dark/system, persisted
+- [x] `go_router` shell with 4 destinations (Track, History, Plan, Settings)
+- [x] l10n: `app_en.arb`, `app_ar.arb`, RTL verified in both themes
+- [x] `get_it` modules + resolve-all smoke test
+- [x] CI: format, analyze, test, build APK on PR
+- [x] PR template, issue templates, Dependabot
+- [ ] `main` protected and labels applied (needs the GitHub remote)
 
 **Posts 03–04:** "I built the theme and RTL switch before the first feature. Here's why."
 

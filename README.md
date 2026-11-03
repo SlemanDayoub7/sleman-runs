@@ -2,7 +2,7 @@
 
 > An offline-first running app built in public — clean architecture, Bloc, SOLID, dark/light, English + Arabic.
 
-**Status:** 🚧 Week 0 — architecture and decisions first, code starts next.
+**Status:** 🚧 Week 1 complete — scaffold, theme, l10n, router, settings and CI are in.
 
 Sleman Runs tracks your runs with live GPS, turns them into splits and weekly volume, and keeps working when your signal doesn't. It is also a public engineering journal: every architectural decision, trade-off and mistake is documented here, in `docs/adr`, and in the build-in-public series.
 
@@ -80,11 +80,9 @@ The series index lives here so the repo and the posts stay connected.
 ## Getting started
 
 ```bash
-# after the app scaffold lands (Week 1)
 flutter pub get
 flutter gen-l10n
-dart run build_runner build --delete-conflicting-outputs
-flutter run
+flutter run -d android
 ```
 
 Minimum SDK: Flutter 3.41 / Dart 3.11.
