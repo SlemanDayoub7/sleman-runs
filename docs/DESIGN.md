@@ -24,7 +24,7 @@ Seed: **Ember** `#FF5A3C` — energy, visibility on a map, and a strong contrast
 | `outline` | `#D3D8E0` | `#2C3542` | Borders |
 | `textPrimary` | `#101419` | `#F2F5F8` | Titles, numbers |
 | `textSecondary` | `#5A6472` | `#9AA6B5` | Labels, metadata |
-| `success` | `#12855A` | `#3DDC97` | Goal met, saved |
+| `success` | `#0E7A4E` | `#3DDC97` | Goal met, saved |
 | `warning` | `#B45309` | `#FBBF24` | Weak GPS, low battery |
 | `error` | `#C02626` | `#FF6B6B` | Failures |
 | `gpsLocked` | `#0E7490` | `#22D3EE` | Signal acquired |
