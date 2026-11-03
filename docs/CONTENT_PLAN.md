@@ -27,7 +27,7 @@ Supporting bio line: *Flutter developer — building [Sleman Runs] in public. Cl
 | Job | Prove judgment and communication | Prove the product is real and you can ship |
 | Format | Text + diagram/carousel, 900–1 400 chars | Reels 15–30 s, carousels, stories |
 | Frequency | 2×/week (Mon, Thu, 8:30–9:30 local) | 3×/week (Tue, Fri, Sun) + story most days |
-| CTA | "Happy to talk about Flutter roles — DMs open" | "Follow the build" / "Try the demo (link in bio)" |
+| CTA | "Happy to talk about Flutter roles — DMs open" | "Follow the build" / "Watch the demo (link in bio)" |
 
 Never post the same caption twice. Same idea, different shape: LinkedIn gets the *why*, Instagram gets the *what it looks like*.
 
@@ -64,7 +64,7 @@ Week 0 content is written **before** the first line of code, so the series start
 | 13 | 6 | History + splits | Carousel: pace zones explained with real splits from a 10K. |
 | 14 | 6 | Bug post-mortem | "This bug only appeared after 4 km. Here's how I found it." |
 | 15 | 7 | Stats | "Weekly volume, streaks, PRs — all in SQL, no backend." |
-| 16 | 7 | Web showcase | "Try the app in your browser. No install, real UI — but the GPS part needs a phone." (link) |
+| 16 | 7 | No web demo | "Everyone told me to add a web demo. I said no. Here's the math." |
 | 17 | 7 | SOLID in real files | Carousel: 5 principles, 5 real file paths, 5 screenshots. |
 | 18 | 8 | Launch | "v1.0 is out. 8 weeks, 61 PRs, X tests, 2 languages, 1 GPS pipeline." |
 | 19 | 8 | Retro + numbers | "What I got wrong: 3 architectural mistakes and what they cost." |
@@ -187,8 +187,8 @@ Posting alone rarely lands a job. Pair it with deliberate outreach.
 
 ## 9. Launch checklist (week 8)
 
-- [ ] Demo link works on mobile Safari and Chrome
-- [ ] README has GIF, demo link, architecture diagram, series index
+- [ ] Demo video plays inline on LinkedIn and Instagram (captions burn-in, sound off)
+- [ ] README has GIF, demo video, architecture diagram, series index
 - [ ] Case study PDF exported and attached to LinkedIn featured
 - [ ] 3-minute demo video (screen recording + captions, no talking head required)
 - [ ] CV updated with the project as the first entry, with metrics

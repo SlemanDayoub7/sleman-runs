@@ -16,14 +16,14 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 | `v0.4-gps-core` | 4 | Acquisition and filtering | Permission flow, GPS stream, filter, live distance/time on screen |
 | `v0.5-live-run` | 5 | Full tracking | Map + polyline, auto-pause, splits, foreground notification, crash recovery |
 | `v0.6-history` | 6 | Run log | List, detail with route map, edit notes/RPE, delete with undo |
-| `v0.7-insight` | 7 | Stats and plans | Weekly volume, streaks, plan generator, pace calculator, web showcase on Pages |
+| `v0.7-insight` | 7 | Stats, plans and the pitch | Weekly volume, streaks, plan generator, pace calculator, 60-second demo video + README GIF |
 | `v1.0-launch` | 8 | Release | Accessibility pass, performance pass, store assets, tag, retro post |
 
 ---
 
 ## Week 1 — Foundation
 
-- [ ] `flutter create` with `--org com.sleman`, package `sleman_runs`, platforms android/ios/web
+- [ ] `flutter create` with `--org com.sleman`, package `sleman_runs`, platforms android/ios (no web, per [ADR-0011](adr/0011-no-web-target.md))
 - [ ] Folder skeleton per [ARCHITECTURE § 2](ARCHITECTURE.md#2-folder-map)
 - [ ] `very_good_analysis`, strict `analysis_options.yaml`, `dependency_validator`
 - [ ] Theme: `ColorScheme.fromSeed`, `AppThemeExtension`, light/dark/system, persisted
@@ -31,10 +31,9 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 - [ ] l10n: `app_en.arb`, `app_ar.arb`, RTL verified in both themes
 - [ ] `get_it` modules + resolve-all smoke test
 - [ ] CI: format, analyze, test, build APK on PR
-- [ ] **Web spike (1 h, timeboxed):** `flutter build web`, Drift wasm, Pages deploy — de-risk [ADR-0010](adr/0010-web-demo-scope.md) now, not in Week 7
 - [ ] `main` protected, PR template, issue templates, labels, Dependabot
 
-**Post 02:** "I built the theme and RTL switch before the first feature. Here's why."
+**Posts 03–04:** "I built the theme and RTL switch before the first feature. Here's why."
 
 ## Week 2 — Design system
 
@@ -44,7 +43,7 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 - [ ] Golden tests for 6 key components in light/dark/AR
 - [ ] Icon set and map style constants
 
-**Post 03:** carousel on design tokens in Flutter (`ThemeExtension` vs `if (isDark)`).
+**Post 05:** carousel on design tokens in Flutter (`ThemeExtension` vs `if (isDark)`).
 
 ## Week 3 — Data layer
 
@@ -55,7 +54,7 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 - [ ] Use cases: `CreateRun`, `SaveRun`, `WatchRuns`, `DeleteRun`, `GetWeeklyStats`
 - [ ] Seed script for demo data (20 runs over 12 weeks)
 
-**Post 04:** "Offline-first isn't a feature, it's a constraint" — schema + sync-queue design.
+**Posts 07–08:** "Offline-first isn't a feature, it's a constraint" — schema + sync-queue design.
 
 ## Week 4 — GPS core
 
@@ -66,7 +65,7 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 - [ ] `TrackingCubit` state machine: idle → acquiring → active → paused → finished
 - [ ] Live metrics UI (no map yet), wakelock while active
 
-**Post 05:** "The three lines of math that make a running app" — with real GPX data.
+**Posts 09–10:** "The three lines of math that make a running app" — with real GPX data.
 
 ## Week 5 — Live run
 
@@ -78,7 +77,7 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 - [ ] Device testing: 5 km walk, screen off, airplane-mode spot checks
 - [ ] Battery measurement log in `docs/perf/`
 
-**Post 06:** "I killed the app mid-run to test crash recovery. It worked — second try."
+**Posts 11–12:** "I killed the app mid-run to test crash recovery. It worked — second try."
 
 ## Week 6 — History
 
@@ -88,18 +87,19 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 - [ ] Filter by distance/date, empty and error states
 - [ ] Deep link `/runs/:id`
 
-**Post 07:** reel — scroll the history, open a run, edit a note.
+**Posts 13–14:** reel — scroll the history, open a run, edit a note.
 
 ## Week 7 — Insight + demo
 
 - [ ] Weekly volume bar chart, streak logic (with unit tests), PR detection
 - [ ] Training plan strategies: 5K beginner, 10K intermediate, half marathon
 - [ ] Pace calculator (split table, negative split, finish-time predictor)
-- [ ] Web showcase (timebox: 1 day): responsive layout, seeded 20 runs, replay mode over `LocationDataSource`, "showcase build" banner
-- [ ] GitHub Pages deploy workflow + live link in README
+- [ ] Record the 60-second demo: real device, screen recording, captions, no talking head
+- [ ] README GIF (5 s loop: start run → map draws → finish → history)
+- [ ] APK signed and attached to the GitHub Release with install instructions
 - [ ] Accessibility: semantics, 48 dp targets, contrast, screen-reader pass
 
-**Post 08:** "Try it in your browser" + the SOLID table as a carousel.
+**Posts 15–17:** "Why my app has no web demo" + the SOLID table as a carousel.
 
 ## Week 8 — Launch
 
@@ -110,7 +110,7 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 - [ ] Retro post: metrics, mistakes, what's next
 - [ ] Update LinkedIn featured section and CV
 
-**Post 09:** launch post + "8 weeks, 1 app, what I learned" thread.
+**Posts 18–20:** launch post + "8 weeks, 1 app, what I learned" thread.
 
 ---
 
@@ -140,5 +140,5 @@ Every issue uses the template: context, acceptance criteria, out-of-scope, scree
 | Background GPS flakiness on OEM Android skins | High | Test on a mid-range device early (Week 4, not Week 7); document findings |
 | Scope creep into social features | High | Anything not in this file goes to `v2` in the backlog, no exceptions |
 | GPS work eats content schedule | Medium | Batch-record content on Sundays; posts can trail the code by days |
-| Web showcase blocked by Drift wasm | Medium | Fallback: web build uses an in-memory repository with seeded data |
+| No link a recruiter can click and try | High | 60 s video + README GIF + APK release + QR code; the video does the work a demo link would |
 | Arabic copy quality | Medium | Native review before Week 8; keep strings short and test with real text length |

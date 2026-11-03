@@ -31,6 +31,6 @@ Schema essentials:
 ## Consequences
 
 - Stats and history are SQL queries, not client-side loops.
-- Web showcase needs `sqlite3.wasm` + a worker; handled in the Week 7 build.
+- No web target ([ADR-0011](0011-no-web-target.md)), so no `sqlite3.wasm`, no worker assets, and one less persistence path to maintain.
 - Migration discipline required from day one; every schema change ships a migration test.
 - v2 sync becomes additive: same ports, one extra data source.

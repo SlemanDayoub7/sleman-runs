@@ -5,7 +5,7 @@
 
 ## Context
 
-Navigation needs: a bottom-nav shell that preserves per-tab state, a deep link into a finished run (`/runs/:id`) from a notification, an onboarding redirect when no goal exists, and a web build where URLs must be shareable and back/forward must work.
+Navigation needs: a bottom-nav shell that preserves per-tab state, a deep link into a finished run (`/runs/:id`) from a notification, an onboarding redirect when no goal exists, and guards that never leave the user on a dead screen.
 
 ## Decision
 
@@ -24,6 +24,6 @@ Navigation needs: a bottom-nav shell that preserves per-tab state, a deep link i
 
 ## Consequences
 
-- Web showcase gets real URLs, which matters for the portfolio link.
+- Deep links make notification taps and "resume run" reliable, which matters more than the extra dependency.
 - Guards centralize "where can the user be" logic.
 - Slight learning curve for `StatefulShellRoute`, documented in the router file.

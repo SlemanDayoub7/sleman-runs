@@ -28,7 +28,7 @@ So this time I wrote the decisions down first. One page each: the context, the c
 02 Feature-first clean architecture — domain never imports Flutter
 03 Bloc/Cubit — a live run is a 6-state machine, not a boolean
 04 Offline-first with Drift — local is the source of truth, not a cache
-05 go_router — the web showcase needs real URLs
+05 go_router — notification deep links and a shell that keeps tab state
 06 geolocator + foreground task — a run must survive a locked screen
 07 flutter_map over Google Maps — no API key, no billing, one code path
 08 ARB + full RTL — Arabic is a test, not a checkbox

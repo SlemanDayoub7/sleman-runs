@@ -252,4 +252,5 @@ Designing for this now costs one migration; retrofitting it later costs a rewrit
 | [0007](adr/0007-flutter-map-over-google-maps.md) | flutter_map over Google Maps |
 | [0008](adr/0008-localization-and-rtl.md) | ARB localization with RTL |
 | [0009](adr/0009-get-it-for-dependency-injection.md) | get_it for DI |
-| [0010](adr/0010-web-demo-scope.md) | Web is a showcase, not a platform |
+| [0010](adr/0010-web-demo-scope.md) | ~~Web is a showcase~~ (superseded by 0011) |
+| [0011](adr/0011-no-web-target.md) | No web target |

@@ -9,7 +9,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- Repository bootstrap: README, architecture document, 9 ADRs, roadmap, testing strategy, design system and content plan.
+- Repository bootstrap: README, architecture document, 11 ADRs (including the reversal that dropped the web target), roadmap, testing strategy, design system and content plan.
 - Contribution workflow: branching model, commit convention, PR and issue templates, code owners.
 - MIT license.
 

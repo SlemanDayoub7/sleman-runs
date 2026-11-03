@@ -126,6 +126,6 @@ Test matrix: `en` light, `en` dark, `ar` light, `ar` dark for every screen. Gold
 - Contrast ≥ 4.5:1 for text, ≥ 3:1 for UI boundaries.
 - Never color alone: pace zones carry a label, PRs carry an icon.
 - Live metrics expose `Semantics(liveRegion: true)` and announce at most every 30 s.
-- Full keyboard/focus order on web; visible focus rings in both themes.
+- Visible focus rings in both themes.
 - Text scaling to 200% without clipping: all metric cards use `FittedBox` or wrap.
 - Haptics on start/pause/finish, with a settings toggle.

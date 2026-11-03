@@ -5,14 +5,14 @@
 
 ## Context
 
-The live run screen and the run detail screen both need a map: a moving polyline, a current-position marker, and a fit-to-bounds view of a finished route. The app ships a free public web showcase and has no backend and no budget.
+The live run screen and the run detail screen both need a map: a moving polyline, a current-position marker, and a fit-to-bounds view of a finished route. The app has no backend, no budget and no API keys.
 
 ## Decision
 
 **`flutter_map` with OpenStreetMap raster tiles**, rendered behind the app's own map style.
 
 - No API key, no billing account, no per-platform setup.
-- Works identically on Android, iOS and web — the demo is one code path.
+- Works identically on Android and iOS, including underneath the foreground-service UI.
 - `PolylineLayer` + `MarkerLayer` + `CameraFit.bounds` cover every requirement.
 - Tile provider is injected, so swapping to a paid/styleable vector provider (MapTiler, MapLibre) later is a one-line change.
 
@@ -20,8 +20,8 @@ Attribution is displayed on the map as required by the OSM tile policy. For a pu
 
 ## Alternatives considered
 
-- **`google_maps_flutter`:** best-looking maps and street data. Rejected for v1: API key management, billing, per-platform config, and flaky web support would consume days that belong to the GPS pipeline.
-- **`maplibre_gl`:** vector tiles, great styling, but heavier setup and weaker web story.
+- **`google_maps_flutter`:** best-looking maps and street data. Rejected for v1: API key management, billing and per-platform config would consume days that belong to the GPS pipeline.
+- **`maplibre_gl`:** vector tiles, great styling, but heavier setup for the same result at this scope.
 - **Custom-painted canvas map:** impressive, but weeks of work for worse results.
 
 ## Consequences

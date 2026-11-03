@@ -1,6 +1,6 @@
 # ADR-0010 — Web is a showcase, not a platform
 
-- **Status:** Accepted
+- **Status:** **Superseded by [ADR-0011](0011-no-web-target.md)** — the web target was dropped entirely before implementation.
 - **Date:** 2026-11-03
 - **Related:** [ADR-0004](0004-offline-first-with-drift.md), [ADR-0006](0006-live-gps-tracking-stack.md), [ADR-0007](0007-flutter-map-over-google-maps.md)
 
