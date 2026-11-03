@@ -1,0 +1,31 @@
+{
+  "@@locale": "en",
+  "appName": "Sleman Runs",
+  "@appName": {
+    "description": "Product name. Never translated."
+  },
+  "appTagline": "Run. Record. Improve.",
+  "navTrack": "Track",
+  "navHistory": "History",
+  "navPlan": "Plan",
+  "navSettings": "Settings",
+  "trackTitle": "Ready to run",
+  "trackPlaceholder": "Live GPS tracking arrives in week 5.",
+  "historyTitle": "Your runs",
+  "historyEmptyTitle": "No runs yet",
+  "historyEmptyBody": "Your first 5K starts here.",
+  "planTitle": "Training plan",
+  "planEmptyTitle": "No plan yet",
+  "planEmptyBody": "Pick a goal to generate a plan.",
+  "settingsTitle": "Settings",
+  "settingsAppearance": "Appearance",
+  "settingsLanguage": "Language",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "languageSystem": "System",
+  "languageEnglish": "English",
+  "languageArabic": "العربية",
+  "commonRetry": "Try again",
+  "errorUnexpected": "Something went wrong."
+}
