@@ -12,7 +12,7 @@ The live run screen and the run detail screen both need a map: a moving polyline
 **`flutter_map` with OpenStreetMap raster tiles**, rendered behind the app's own map style.
 
 - No API key, no billing account, no per-platform setup.
-- Works identically on Android and iOS, including underneath the foreground-service UI.
+- Works on Android, including underneath the foreground-service UI, with no API key in the build.
 - `PolylineLayer` + `MarkerLayer` + `CameraFit.bounds` cover every requirement.
 - Tile provider is injected, so swapping to a paid/styleable vector provider (MapTiler, MapLibre) later is a one-line change.
 

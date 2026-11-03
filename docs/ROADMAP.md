@@ -10,7 +10,7 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 
 | Milestone | Week | Outcome | Exit criteria |
 | --- | --- | --- | --- |
-| `v0.1-foundation` | 1 | Project skeleton | `flutter run` on Android + iOS, theme toggle, EN/AR switch, 4 empty tabs |
+| `v0.1-foundation` | 1 | Project skeleton | `flutter run` on Android, theme toggle, EN/AR switch, 4 empty tabs |
 | `v0.2-design-system` | 2 | Tokens and components | Light/dark/RTL golden tests, shared widgets, no hardcoded colors or strings |
 | `v0.3-data-layer` | 3 | Offline storage | Drift schema + migrations, repositories, in-memory DB tests, seeded demo data |
 | `v0.4-gps-core` | 4 | Acquisition and filtering | Permission flow, GPS stream, filter, live distance/time on screen |
@@ -23,7 +23,7 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 
 ## Week 1 — Foundation
 
-- [ ] `flutter create` with `--org com.sleman`, package `sleman_runs`, platforms android/ios (no web, per [ADR-0011](adr/0011-no-web-target.md))
+- [ ] `flutter create` with `--org com.sleman`, package `sleman_runs`, `--platforms=android` (no web per [ADR-0011](adr/0011-no-web-target.md), no iOS in v1 per [ADR-0012](adr/0012-android-only-v1.md))
 - [ ] Folder skeleton per [ARCHITECTURE § 2](ARCHITECTURE.md#2-folder-map)
 - [ ] `very_good_analysis`, strict `analysis_options.yaml`, `dependency_validator`
 - [ ] Theme: `ColorScheme.fromSeed`, `AppThemeExtension`, light/dark/system, persisted
@@ -104,7 +104,7 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 ## Week 8 — Launch
 
 - [ ] Performance: startup trace, frame timings, image/tile caching
-- [ ] App icon, splash, store screenshots (EN + AR), feature graphic
+- [ ] Android: app icon, splash, Play screenshots (EN + AR), feature graphic
 - [ ] `CHANGELOG.md`, tag `v1.0.0`, GitHub Release with notes
 - [ ] 3-minute demo video, case study PDF
 - [ ] Retro post: metrics, mistakes, what's next

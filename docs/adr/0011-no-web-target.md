@@ -18,7 +18,7 @@ The project is time-boxed to eight weeks and GPS is in scope. The web build comp
 
 **No web target. Ever, for this project.**
 
-- `flutter create --platforms android,ios` — no `web/` directory.
+- `flutter create --platforms android` — no `web/` directory, and no iOS target for v1 ([ADR-0012](0012-android-only-v1.md)).
 - No GitHub Pages, no showcase build, no wasm persistence, no responsive web layout.
 - ADR-0010 is superseded and retained only as history.
 - Nothing in the codebase may depend on web: no `kIsWeb` branches, no web-only packages.

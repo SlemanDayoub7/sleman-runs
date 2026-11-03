@@ -30,6 +30,8 @@ Most portfolio apps are a UI with a `main.dart`. This one is the opposite: the p
 
 Deliberately out of scope for v1: social feed, wearable sync, AI coaching, payments.
 
+**Platform:** Android 8.0+ (API 26). iOS is deferred, not ruled out — [ADR-0012](docs/adr/0012-android-only-v1.md). There is no web build at all — [ADR-0011](docs/adr/0011-no-web-target.md).
+
 ## Stack
 
 | Concern | Choice | Decision |

@@ -64,7 +64,7 @@ Week 0 content is written **before** the first line of code, so the series start
 | 13 | 6 | History + splits | Carousel: pace zones explained with real splits from a 10K. |
 | 14 | 6 | Bug post-mortem | "This bug only appeared after 4 km. Here's how I found it." |
 | 15 | 7 | Stats | "Weekly volume, streaks, PRs — all in SQL, no backend." |
-| 16 | 7 | No web demo | "Everyone told me to add a web demo. I said no. Here's the math." |
+| 16 | 7 | Scope discipline | "Everyone told me to add a web demo and ship iOS. I did neither. Here's the math." |
 | 17 | 7 | SOLID in real files | Carousel: 5 principles, 5 real file paths, 5 screenshots. |
 | 18 | 8 | Launch | "v1.0 is out. 8 weeks, 61 PRs, X tests, 2 languages, 1 GPS pipeline." |
 | 19 | 8 | Retro + numbers | "What I got wrong: 3 architectural mistakes and what they cost." |
@@ -141,7 +141,7 @@ Captions burned in (most people watch muted), trending-but-relevant audio only, 
 - Banner: app screenshot + "8 weeks. 1 app. All public."
 - Featured: repo link, demo link, launch post, case study PDF.
 - About: 4 short paragraphs — what you build, how you build it, proof links, what you're looking for.
-- Open to work: Flutter/Android/iOS roles, on-site + remote, with a note referencing the build.
+- Open to work: Flutter/Android roles, on-site + remote, with a note referencing the build.
 
 **Instagram**
 - Handle close to the brand; bio: `Building a running app in public 🏃 · Flutter · EN/AR · v1.0 in 8 weeks`
