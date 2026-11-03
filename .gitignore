@@ -1,0 +1,76 @@
+# Misc
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
+# IntelliJ / Android Studio
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VS Code
+.vscode/
+
+# Flutter/Dart/Pub
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+coverage/
+
+# Symbolication
+app.*.symbols
+
+# Obfuscation map
+app.*.map.json
+
+# Android
+android/app/debug
+android/app/profile
+android/app/release
+android/.gradle/
+android/local.properties
+android/key.properties
+*.jks
+*.keystore
+
+# iOS / macOS
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/ephemeral/
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Runner/GoogleService-Info.plist
+macos/Pods/
+macos/Flutter/ephemeral/
+
+# Web
+web/sqlite3.wasm
+web/drift_worker.js
+
+# Localization output (regenerate with: flutter gen-l10n)
+lib/app/l10n/generated/
+
+# Environment and tooling
+.env
+.env.*
+!.env.example
+*.gpx.tmp
+test/failures/
+
+# OS
+Thumbs.db
