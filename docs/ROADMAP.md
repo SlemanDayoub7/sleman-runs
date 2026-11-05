@@ -19,6 +19,10 @@ Eight weeks, one milestone per week, one shippable slice each. GPS is in v1, whi
 | `v0.7-insight` | 7 | Stats, plans and the pitch | Weekly volume, streaks, plan generator, pace calculator, 60-second demo video + README GIF |
 | `v1.0-launch` | 8 | Release | Accessibility pass, performance pass, store assets, tag, retro post |
 
+### Beyond v1
+
+v2 adds optional accounts and sync through Supabase — deferred and kept behind a repository port per [ADR-0013](adr/0013-optional-supabase-backend.md). Nothing in v1 depends on it, but the Week 3 schema uses UUID keys and a `sync_queue` so v2 can replay local changes without a rewrite.
+
 ---
 
 ## Week 1 — Foundation

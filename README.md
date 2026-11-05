@@ -26,7 +26,7 @@ Most portfolio apps are a UI with a `main.dart`. This one is the opposite: the p
 | **v0.5** | Live GPS tracking, map, auto-pause, crash-safe session recovery |
 | **v0.8** | Run history, splits, stats dashboard, training plans, pace calculator |
 | **v1.0** | Polish, accessibility, demo video, store-ready build |
-| **v2.0** | Account + sync, friend activity, offline queue replay |
+| **v2.0** | Optional Supabase account + sync, friend activity, offline queue replay |
 
 Deliberately out of scope for v1: social feed, wearable sync, AI coaching, payments.
 
