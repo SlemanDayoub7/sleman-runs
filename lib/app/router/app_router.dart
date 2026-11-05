@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sleman_runs/app/l10n/generated/app_localizations.dart';
+import 'package:sleman_runs/app/app_context.dart';
 import 'package:sleman_runs/app/router/app_routes.dart';
 import 'package:sleman_runs/app/router/app_shell.dart';
+import 'package:sleman_runs/core/error/failure.dart';
 import 'package:sleman_runs/features/history/presentation/pages/history_page.dart';
 import 'package:sleman_runs/features/plans/presentation/pages/plan_page.dart';
 import 'package:sleman_runs/features/settings/presentation/pages/settings_page.dart';
 import 'package:sleman_runs/features/tracking/presentation/pages/tracking_page.dart';
+import 'package:sleman_runs/shared/widgets/app_error_view.dart';
+import 'package:sleman_runs/shared/widgets/app_scaffold.dart';
+import 'package:sleman_runs/shared/widgets/app_text.dart';
 
 /// Builds the router.
 ///
@@ -57,9 +61,11 @@ GoRouter createRouter() {
       ),
     ],
     errorBuilder: (context, state) {
-      return Scaffold(
-        body: Center(
-          child: Text(AppLocalizations.of(context).errorUnexpected),
+      return AppScaffold(
+        appBar: AppBar(title: AppText(context.l10n.errorTitle)),
+        body: AppErrorView(
+          failure: const UnknownFailure(),
+          onRetry: () => context.go(AppRoutes.track),
         ),
       );
     },

@@ -27,5 +27,10 @@
   "languageEnglish": "English",
   "languageArabic": "العربية",
   "commonRetry": "Try again",
+  "errorTitle": "Something went wrong",
+  "errorPermission": "Location permission is required to record a run.",
+  "errorLocationUnavailable": "GPS signal is unavailable. Move to open sky and try again.",
+  "errorStorage": "Your settings could not be saved.",
+  "errorValidation": "That value doesn't look right.",
   "errorUnexpected": "Something went wrong."
 }

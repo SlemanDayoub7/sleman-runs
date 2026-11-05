@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:sleman_runs/app/app_mappings.dart';
 import 'package:sleman_runs/app/l10n/generated/app_localizations.dart';
 import 'package:sleman_runs/app/theme/app_theme.dart';
+import 'package:sleman_runs/features/settings/domain/entities/app_settings.dart';
 import 'package:sleman_runs/features/settings/presentation/cubit/settings_cubit.dart';
 import 'package:sleman_runs/features/settings/presentation/cubit/settings_state.dart';
 
@@ -25,10 +26,18 @@ class SlemanRunsApp extends StatelessWidget {
       child: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, state) {
           final settings = state.currentSettings;
+          final arabic = _isArabic(settings.language);
+
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
-            theme: AppTheme.light,
-            darkTheme: AppTheme.dark,
+            theme: AppTheme.forLocale(
+              brightness: Brightness.light,
+              arabic: arabic,
+            ),
+            darkTheme: AppTheme.forLocale(
+              brightness: Brightness.dark,
+              arabic: arabic,
+            ),
             themeMode: settings.themeMode.material,
             locale: settings.language.locale,
             supportedLocales: AppLocalizations.supportedLocales,
@@ -41,5 +50,18 @@ class SlemanRunsApp extends StatelessWidget {
         },
       ),
     );
+  }
+
+  static bool _isArabic(AppLanguage language) {
+    return switch (language) {
+      AppLanguage.arabic => true,
+      AppLanguage.english => false,
+      AppLanguage.system =>
+        basicLocaleListResolution(
+              WidgetsBinding.instance.platformDispatcher.locales,
+              AppLocalizations.supportedLocales,
+            ).languageCode ==
+            'ar',
+    };
   }
 }

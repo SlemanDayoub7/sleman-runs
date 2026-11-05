@@ -24,5 +24,10 @@
   "languageEnglish": "English",
   "languageArabic": "العربية",
   "commonRetry": "إعادة المحاولة",
+  "errorTitle": "حدث خطأ",
+  "errorPermission": "يجب السماح بالوصول إلى الموقع لتسجيل جريك.",
+  "errorLocationUnavailable": "إشارة تحديد الموقع غير متاحة. انتقل إلى مكان مفتوح وحاول مرة أخرى.",
+  "errorStorage": "تعذّر حفظ إعداداتك.",
+  "errorValidation": "هذه القيمة غير صحيحة.",
   "errorUnexpected": "حدث خطأ غير متوقع."
 }
