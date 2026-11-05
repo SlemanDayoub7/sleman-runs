@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sleman_runs/app/l10n/generated/app_localizations.dart';
-import 'package:sleman_runs/app/theme/app_colors.dart';
+import 'package:sleman_runs/app/app_context.dart';
 
 /// Bottom navigation shell.
 ///
@@ -14,17 +13,11 @@ class AppShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-    final colors = Theme.of(context).extension<AppColors>()!;
-
+    final l10n = context.l10n;
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: NavigationBar(
         selectedIndex: navigationShell.currentIndex,
-        backgroundColor: colors.surface,
-        surfaceTintColor: Colors.transparent,
-        indicatorColor: colors.primaryContainer,
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         onDestinationSelected: (index) {
           navigationShell.goBranch(
             index,

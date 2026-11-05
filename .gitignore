@@ -41,6 +41,7 @@ android/app/debug
 android/app/profile
 android/app/release
 android/.gradle/
+android/.kotlin/
 android/local.properties
 android/key.properties
 *.jks
@@ -71,6 +72,7 @@ lib/app/l10n/generated/
 !.env.example
 *.gpx.tmp
 test/failures/
+test/goldens/failures/
 
 # OS
 Thumbs.db

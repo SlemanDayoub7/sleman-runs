@@ -96,3 +96,40 @@ jobs:
           name: apk-debug
           path: build/app/outputs/flutter-apk/app-debug.apk
           if-no-files-found: error
+
+  goldens:
+    name: Golden tests
+    # Pixel baselines were generated on Windows, so CI verifies them on the
+    # same platform. Font rasterisation differs across operating systems and a
+    # Linux runner would report false diffs.
+    runs-on: windows-latest
+    needs: quality
+    env:
+      RUN_GOLDENS: "1"
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.41.2"
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Generate localisations
+        run: flutter gen-l10n
+
+      - name: Compare goldens
+        run: flutter test test/goldens
+
+      - name: Upload golden failures
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: golden-failures
+          path: test/goldens/failures
+          if-no-files-found: ignore
