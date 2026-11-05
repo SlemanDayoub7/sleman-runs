@@ -10,6 +10,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added
 
 - Android scaffold on Flutter 3.41: feature-first clean architecture (`core`, `app`, `features`, `shared`), `very_good_analysis` with strict casts/inference, and `dependency_validator` in CI.
+- Android toolchain aligned with the locally installed Gradle 8.10.2 and NDK 27.0.12077973, so a fresh build needs no extra downloads.
 - Design tokens for light and dark themes, with WCAG contrast tests for every text token.
 - English and Arabic localisation via ARB files, including RTL layout tests.
 - `go_router` shell with four destinations, an explicit `get_it` composition root, and persisted theme/language settings.
