@@ -1,7 +1,7 @@
 name: sleman_runs
 description: "Offline-first running app built in public."
 publish_to: "none"
-version: 0.1.0+1
+version: 0.2.0+2
 
 environment:
   sdk: ^3.11.0
@@ -34,5 +34,29 @@ flutter:
   uses-material-design: true
   generate: true
 
-  # Fonts are bundled in Week 2 with their OFL licences. Until then the
-  # platform font is used, with tabular figures for metrics.
+  # The OFL texts travel with the font binaries, so a release APK carries the
+  # licence it is required to reproduce.
+  assets:
+    - assets/fonts/Manrope/OFL.txt
+    - assets/fonts/JetBrains_Mono/OFL.txt
+    - assets/fonts/IBM_Plex_Sans_Arabic/OFL.txt
+
+  # Fonts are bundled with their OFL licences so the app works offline from
+  # the first launch. No google_fonts and no runtime network fetch.
+  fonts:
+    - family: Manrope
+      fonts:
+        - asset: 'assets/fonts/Manrope/Manrope[wght].ttf'
+    - family: IBM Plex Sans Arabic
+      fonts:
+        - asset: assets/fonts/IBM_Plex_Sans_Arabic/IBMPlexSansArabic-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/IBM_Plex_Sans_Arabic/IBMPlexSansArabic-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/IBM_Plex_Sans_Arabic/IBMPlexSansArabic-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/IBM_Plex_Sans_Arabic/IBMPlexSansArabic-Bold.ttf
+          weight: 700
+    - family: JetBrains Mono
+      fonts:
+        - asset: 'assets/fonts/JetBrains_Mono/JetBrainsMono[wght].ttf'
