@@ -79,13 +79,47 @@ Required cases: start with permission denied, start with GPS disabled, pause/res
 
 ---
 
-## 4. Widget and golden tests
+## 4. Widget, layout and golden tests
 
-Goldens for: theme switch, live run screen, run detail, empty history, plan card, error state.
+Widget tests cover the design system contract, not just "does it render":
 
-Each golden runs in `en-LTR-light`, `en-LTR-dark`, `ar-RTL-light`, `ar-RTL-dark` — 24 files. Reviewing a golden diff is how RTL overflow gets caught in seconds instead of at launch.
+| Suite | What it proves |
+| --- | --- |
+| `test/shared/widgets/app_text_test.dart` | Roles map to the type scale; tones resolve per theme; metrics stay LTR in Arabic; semantics/maxLines forward |
+| `test/shared/widgets/app_button_test.dart` | Tap, disabled, loading spinner blocks taps, full-width mode, icon + label |
+| `test/shared/widgets/app_scaffold_test.dart` | 20/24 dp gutters, 600 dp content cap, full-bleed escape hatch |
+| `test/shared/widgets/app_feedback_test.dart` | Badge, skeleton, metric semantics, section header, empty state at 320 dp / 200% |
+| `test/shared/widgets/app_error_view_test.dart` | Every `FailureCode` maps to exactly one localised sentence (EN + AR) and retry fires |
+| `test/app/theme/design_theme_test.dart` | Four cached variants, type scale, variable-font weights, Arabic +10% line height, component tokens |
 
-Fonts are loaded from `test/fonts/` so goldens are deterministic across machines.
+### Responsive matrix
+
+`test/app/responsive/layout_matrix_test.dart` renders all four screens at:
+
+- widths `320`, `412`, `840` dp;
+- text scale `1.0` and `2.0`;
+- all four variants (`en`/`ar` × light/dark).
+
+That is 96 combinations. Each one fails on an overflow exception, a wrong `Directionality` or a wrong brightness. This is the test that makes "portrait on phones, responsive everywhere" real rather than aspirational — Android 16 ignores orientation locks on large displays ([ADR-0014](adr/0014-portrait-phones-responsive-layout.md)).
+
+### Pixel goldens
+
+Sixteen baselines: four screens (tracking, history, plan, settings) × four theme variants, at the 412 × 915 design surface.
+
+- Fonts are loaded from `assets/fonts/` through `FontLoader` in `test/support/load_fonts.dart`. Widget tests otherwise use Ahem, which would make every baseline meaningless.
+- Goldens are **opt-in locally** so a normal `flutter test` is fast and does not fail on OS font rasterisation:
+
+```bash
+RUN_GOLDENS=1 flutter test --update-goldens test/goldens   # accept a change
+RUN_GOLDENS=1 flutter test test/goldens                    # compare
+```
+
+- CI runs the comparison on **`windows-latest`**, the platform the baselines were generated on. A Linux runner would report diffs for identical UI.
+- Reviewing a golden diff is how RTL overflow and a stray colour get caught in seconds instead of at launch.
+
+### What is not painted
+
+The map is excluded from pixel goldens: tile rendering is non-deterministic. Assert the polyline, marker and attribution widgets exist instead (Week 5).
 
 ---
 
@@ -107,14 +141,20 @@ Results go in `docs/perf/device-matrix.md` with device, OS and build hash. Numbe
 ## 6. CI gates
 
 ```bash
-dart format --set-exit-if-changed .
+dart format --output=none --set-exit-if-changed .
 flutter analyze --fatal-infos
-flutter test --coverage
 dart run dependency_validator
+flutter test --coverage
 flutter build apk --debug
 ```
 
-PRs cannot merge with a red check. Coverage is reported, not gated at a fixed number — a gate on a percentage rewards testing getters.
+Plus, on a Windows runner:
+
+```bash
+RUN_GOLDENS=1 flutter test test/goldens
+```
+
+PRs cannot merge with a red check. Coverage is reported, not gated at a fixed number — a gate on a percentage rewards testing getters. The golden job is required even though it is slower: a design system that is not pixel-verified is a design suggestion.
 
 ---
 
@@ -123,3 +163,4 @@ PRs cannot merge with a red check. Coverage is reported, not gated at a fixed nu
 - Generated code (`*.freezed.dart`, `*.g.dart`, l10n).
 - Third-party plugin internals; we test our wrapper's contract instead.
 - Pixel-perfect goldens for the map (tile rendering is non-deterministic) — assert the polyline and markers exist instead.
+- Pixel goldens on every CI operating system. Baselines are Windows-only by design; the layout matrix is the cross-platform guard.

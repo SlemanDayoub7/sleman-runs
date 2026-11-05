@@ -106,6 +106,28 @@ git push -u origin HEAD
 gh pr create --fill
 ```
 
+### Pixel goldens
+
+Pixel comparison is opt-in locally so `flutter test` stays fast and does not fail on OS-specific font rasterisation. Goldens are verified in CI on **Windows**, the platform the baselines were generated on:
+
+PowerShell:
+
+```powershell
+$env:RUN_GOLDENS='1'; flutter test test/goldens                    # compare
+$env:RUN_GOLDENS='1'; flutter test --update-goldens test/goldens   # accept a change
+```
+
+Bash:
+
+```bash
+RUN_GOLDENS=1 flutter test test/goldens
+RUN_GOLDENS=1 flutter test --update-goldens test/goldens
+```
+
+Regenerate a baseline only after reviewing the diff, and commit the PNGs with the code change that caused them. Never regenerate on Linux: the golden job runs on `windows-latest` and a Linux baseline would produce false diffs.
+
+The layout matrix (`flutter test test/app/responsive`) always runs and is the cross-platform guard for overflow, RTL and brightness at 320/412/840 dp.
+
 Hooks via `lefthook` (added in Week 1) run format + analyze on commit and tests on push.
 
 ## 6. Issues and labels

@@ -39,10 +39,13 @@ lib/
 ├── bootstrap.dart             # DI, error handlers, l10n, orientation
 ├── app/
 │   ├── app.dart               # MaterialApp.router, themes, locales
+│   ├── app_context.dart       # Theme, l10n and window extensions
 │   ├── router/                # go_router config, path constants, guards
+│   ├── responsive/            # AppWindowClass (compact/medium/expanded)
 │   ├── di/                    # get_it registration modules
-│   ├── theme/                 # ColorScheme, ThemeExtensions, typography
-│   └── l10n/                  # app_en.arb, app_ar.arb, generated/
+│   ├── theme/                 # colours, typography, component themes
+│   │   └── tokens/            # static spacing, size, radius, motion tokens
+│   └── l10n/                  # ARB files, failure-to-copy mapping, generated/
 ├── core/
 │   ├── error/                 # Failure hierarchy, error mapper
 │   ├── result/                # typedef Result<T> = Either<Failure, T>
@@ -71,8 +74,8 @@ lib/
 │   ├── plans/                 # training plan strategies
 │   └── settings/              # theme mode, language, units, permissions
 └── shared/
-    ├── widgets/               # buttons, empty states, error views
-    └── extensions/            # BuildContext, DateTime, num
+    ├── widgets/               # AppText, AppScaffold, AppButton, …
+    └── extensions/            # DateTime, num helpers
 ```
 
 Each feature is a vertical slice: `domain` → `data` → `presentation`. Adding a feature means adding a folder, not editing five layers.
@@ -189,23 +192,25 @@ While a run is active, accepted points are flushed to Drift **every 5 seconds** 
 
 ## 6. Error handling
 
-No exceptions cross a layer boundary. `data` catches, logs, and returns `Failure`:
+No exceptions cross a layer boundary. `data` catches, logs, and converts to a failure with a stable code:
 
 ```dart
+enum FailureCode { permission, locationUnavailable, storage, validation, unknown }
+
 sealed class Failure {
-  const Failure(this.message, {this.cause});
-  final String message;
-  final Object? cause;
+  const Failure(this.code, {this.cause});
+  final FailureCode code;
+  final Object? cause;   // logging only, never rendered
 }
 
-final class PermissionFailure extends Failure { ... }   // location denied/forever
-final class LocationServiceFailure extends Failure { ... } // GPS disabled
-final class DatabaseFailure extends Failure { ... }
+final class PermissionFailure extends Failure { ... }          // location denied
+final class LocationUnavailableFailure extends Failure { ... } // GPS disabled or no fix
+final class StorageFailure extends Failure { ... }
 final class ValidationFailure extends Failure { ... }
 final class UnknownFailure extends Failure { ... }
 ```
 
-`Result<T> = Either<Failure, T>`. Cubits `fold` into a `Failure` state that the UI renders with a localized message and a retry action. Failures carry a stable key, not a user-facing string, so ARB owns the wording.
+`Result<T> = Either<Failure, T>`. Cubits `fold` into a failure state, and `AppErrorView` maps the code to localised copy in `lib/app/l10n/failure_messages.dart`. Failures carry no user-facing string, so ARB owns every word and a new failure code fails to compile until it has a message.
 
 ## 7. Offline-first
 
@@ -230,7 +235,17 @@ Designing for this now costs one migration; retrofitting it later costs a rewrit
 
 ## 9. Design system
 
-`ThemeExtension` carries non-Material tokens (split colors, map style, pace zones) so dark and light are one object swap, not `if (isDark)` scattered through widgets. See [DESIGN.md](DESIGN.md).
+The design system is a layer, not a folder of colours:
+
+- **Tokens** live in `lib/app/theme`: `AppColors` and `PaceColors` as `ThemeExtension`s, plus static `AppSpacing`, `AppSizes`, `AppRadii` and `AppMotion`. Static values are constants because they do not change with brightness or locale.
+- **Themes** are built once per brightness × locale variant (`lightEn`, `lightAr`, `darkEn`, `darkAr`) and cached in `AppTheme`. Selecting a theme is a lookup, not a `ThemeData` rebuild on every frame.
+- **Component themes** in `app_component_theme.dart` style Material controls globally, so feature screens use standard buttons, inputs and app bars without local restyling.
+- **Context extensions** in `app_context.dart` are the only door into the system: `context.appColors`, `context.paceColors`, `context.textTheme`, `context.l10n`, `context.window`, `context.isRtl`.
+- **Widgets** in `lib/shared/widgets` encode the allowed compositions: `AppText` couples a type role with a semantic tone; `AppScaffold` owns gutters and the content cap; `AppErrorView` turns a `Failure` into copy.
+- **Responsiveness** is width-based (`AppWindowClass`), never orientation-based, because Android 16 ignores portrait locks on large displays. See [ADR-0014](adr/0014-portrait-phones-responsive-layout.md).
+- **Fonts are bundled** (Manrope, JetBrains Mono, IBM Plex Sans Arabic) so the first frame is correct offline. See [ADR-0015](adr/0015-bundled-fonts.md).
+
+The full contract — tokens, roles, component catalogue, RTL and accessibility rules — is in [DESIGN.md](DESIGN.md).
 
 ## 10. What is deliberately missing
 
@@ -256,3 +271,5 @@ Designing for this now costs one migration; retrofitting it later costs a rewrit
 | [0011](adr/0011-no-web-target.md) | No web target |
 | [0012](adr/0012-android-only-v1.md) | Android-only for v1 |
 | [0013](adr/0013-optional-supabase-backend.md) | Optional Supabase backend (proposed for v2) |
+| [0014](adr/0014-portrait-phones-responsive-layout.md) | Portrait on phones, responsive everywhere |
+| [0015](adr/0015-bundled-fonts.md) | Bundled fonts, one family per script |

@@ -42,13 +42,22 @@ v2 adds optional accounts and sync through Supabase — deferred and kept behind
 
 ## Week 2 — Design system
 
-- [ ] Type scale with tabular figures for pace/time
-- [ ] Buttons, cards, chips, empty states, error views, skeleton loaders
-- [ ] Motion tokens (150/250/400 ms, one easing curve) with reduced-motion support
-- [ ] Golden tests for 6 key components in light/dark/AR
-- [ ] Icon set and map style constants
+- [x] Design tokens: colours and pace zones as `ThemeExtension`s; static spacing, size, radius and motion tokens
+- [x] Type scale with bundled Manrope, JetBrains Mono (tabular) and IBM Plex Sans Arabic; variable-font weights and +10% Arabic line height
+- [x] Four cached themes (`en`/`ar` × light/dark) and one global component theme
+- [x] Context extensions: `appColors`, `paceColors`, `textTheme`, `l10n`, `window`, `isRtl`
+- [x] Shared widgets: `AppText`, `AppIcon`, `AppScaffold`, `AppButton`, `AppCard`, `AppSectionHeader`, `AppEmptyState`, `AppErrorView`, `AppBadge`, `AppSkeleton`, `AppMetric`, `AppChoiceChip`
+- [x] Failure-to-copy mapping so presentation never invents error strings
+- [x] Responsive width classes and a 600 dp content cap; portrait requested on phones, layout survives Android 16 ignoring the lock
+- [x] Motion tokens (150/250/400 ms, one easing curve) with reduced-motion support
+- [x] Widget tests for every shared widget, a 96-combination responsive matrix, and 16 pixel goldens
+- [x] Windows CI golden job; `RUN_GOLDENS=1` keeps local runs fast
+- [x] ADR-0014 (portrait/responsive) and ADR-0015 (bundled fonts); DESIGN, ARCHITECTURE, TESTING and PERFORMANCE updated
+- [x] Font licences recorded in `THIRD_PARTY_NOTICES.md`
 
-**Post 05:** carousel on design tokens in Flutter (`ThemeExtension` vs `if (isDark)`).
+**Post 05:** carousel on design tokens in Flutter (`ThemeExtension` vs `if (isDark)`), plus the Android 16 orientation-lock reversal.
+
+**Exit criteria met when:** CI is green on `main`, the golden job passes on Windows, and every screen renders in all four variants at 320 dp / 200% without overflow.
 
 ## Week 3 — Data layer
 
