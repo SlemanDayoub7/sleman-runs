@@ -40,22 +40,31 @@ void main() {
     await tester.pumpAndSettle();
   }
 
+  /// Scoped to the navigation bar: a tab label and an app bar title can share
+  /// the same word, so an unscoped `find.text` would be ambiguous.
+  Finder navLabel(String label) {
+    return find.descendant(
+      of: find.byType(NavigationBar),
+      matching: find.text(label),
+    );
+  }
+
   testWidgets('renders all four navigation destinations in English', (
     tester,
   ) async {
     await pumpApp(tester);
 
-    expect(find.text('Track'), findsOneWidget);
-    expect(find.text('History'), findsOneWidget);
-    expect(find.text('Plan'), findsOneWidget);
-    expect(find.text('Settings'), findsOneWidget);
+    expect(navLabel('Track'), findsOneWidget);
+    expect(navLabel('History'), findsOneWidget);
+    expect(navLabel('Plan'), findsOneWidget);
+    expect(navLabel('Settings'), findsOneWidget);
   });
 
   testWidgets('starts on the tracking tab', (tester) async {
     await pumpApp(tester);
 
     expect(find.text('Ready to run'), findsOneWidget);
-    expect(find.text('History'), findsOneWidget);
+    expect(navLabel('Track'), findsOneWidget);
   });
 
   testWidgets('switches to Arabic and lays the shell out right to left', (
@@ -63,10 +72,10 @@ void main() {
   ) async {
     await pumpApp(tester, language: AppLanguage.arabic);
 
-    expect(find.text('الجري'), findsOneWidget);
-    expect(find.text('السجل'), findsOneWidget);
-    expect(find.text('الخطة'), findsOneWidget);
-    expect(find.text('الإعدادات'), findsOneWidget);
+    expect(navLabel('الجري'), findsOneWidget);
+    expect(navLabel('السجل'), findsOneWidget);
+    expect(navLabel('الخطة'), findsOneWidget);
+    expect(navLabel('الإعدادات'), findsOneWidget);
 
     final shellContext = tester.element(find.byType(NavigationBar));
     expect(Directionality.of(shellContext), TextDirection.rtl);
@@ -90,7 +99,7 @@ void main() {
   testWidgets('navigates to settings from the bottom bar', (tester) async {
     await pumpApp(tester);
 
-    await tester.tap(find.text('Settings'));
+    await tester.tap(navLabel('Settings'));
     await tester.pumpAndSettle();
 
     expect(find.byType(SettingsPage), findsOneWidget);
